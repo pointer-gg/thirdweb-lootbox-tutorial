@@ -6,7 +6,9 @@
     "start": "next start"
   },
   "dependencies": {
+    "@3rdweb/hooks": "^1.8.0",
     "@3rdweb/react": "^1.8.1",
+    "@3rdweb/sdk": "^1.32.5",
     "next": "latest",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"

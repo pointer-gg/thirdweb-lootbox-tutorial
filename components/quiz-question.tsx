@@ -1,4 +1,6 @@
 import { useState } from "react"
+import { isGeneratorObject } from "util/types"
+import OpenButton from "./open-button"
 
 type Props = {
   questionText: string,
@@ -12,7 +14,6 @@ type AnswerResult = "correct" | "incorrect" | "none"
 
 export default function QuizQuestion({questionText, image, answers, correctAnswerIndex, nextQuestionFunction}: Props) {
   const [answerResult, setAnswerResult] = useState<AnswerResult>("none")
-  const [openedReward, setOpenedReward] = useState(false)
 
   const handleAnswerSelect = (index: number) => {
     if(index === correctAnswerIndex) {
@@ -20,8 +21,22 @@ export default function QuizQuestion({questionText, image, answers, correctAnswe
     } else {
       setAnswerResult("incorrect")
     }
-    nextQuestionFunction()
   }
+
+  if(answerResult === "correct") return (
+    <>
+      <p className="text-green-900">Correct!</p>
+      <OpenButton />
+      <button onClick={nextQuestionFunction}>Next question!</button>
+    </>
+  )
+
+  if(answerResult === "incorrect") return (
+    <>
+    <p className="text-red-900">Sorry, that was incorrect!</p>
+    <button onClick={nextQuestionFunction}>Next question!</button>
+    </>
+  )
 
   return (
     <>
@@ -29,12 +44,9 @@ export default function QuizQuestion({questionText, image, answers, correctAnswe
       {image ? <img src={image} alt="" /> : null}
       <ol className='list-[upper-alpha]'>
         {answers.map((answerText, i) => {
-          return <li onClick={(e) => handleAnswerSelect(i)} className='cursor-pointer'>{answerText}</li>
+          return <li key={i} onClick={(e) => handleAnswerSelect(i)} className='cursor-pointer'>{answerText}</li>
         })}
       </ol>
-
-      {answerResult === "correct" && <p className="text-green-900">Correct!</p>}
-      {answerResult === "incorrect" && <p className="text-red-900">Incorrect!</p>}
     </>
   )
 }

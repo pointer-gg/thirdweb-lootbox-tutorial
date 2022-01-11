@@ -16,10 +16,8 @@ export default function QuizGame({questions}: Props) {
   const [questionIndex, setQuestionIndex] = useState(0)
   const [quizComplete, setQuizComplete] = useState(false)
 
-  const hasNextQuestion = questionIndex + 1 < questions.length;
-
   const nextQuestion = () => {
-    if(hasNextQuestion) {
+    if(questionIndex + 1 < questions.length) {
       setQuestionIndex(questionIndex + 1)
     } else {
       setQuizComplete(true)
@@ -35,14 +33,13 @@ export default function QuizGame({questions}: Props) {
   return (
     <>
       <QuizQuestion
+        key={questionIndex}
         questionText={question.questionText}
         image={question.image}
         answers={question.answers}
         correctAnswerIndex={question.correctAnswerIndex}
         nextQuestionFunction={nextQuestion}
       />
-
-      {hasNextQuestion && <button>Next Question</button>}
     </>
   )
 }
