@@ -12,7 +12,7 @@ const connectors = {
   injected: {},
 };
 
-function MyApp({ Component, pageProps }: AppProps) {
+export default function MyApp({ Component, pageProps }: AppProps) {
   return (
     <ThirdwebProvider
       connectors={connectors}
@@ -24,5 +24,3 @@ function MyApp({ Component, pageProps }: AppProps) {
     </ThirdwebProvider>
   )
 }
-
-export default MyApp
