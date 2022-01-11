@@ -3,7 +3,7 @@ import { ThirdwebSDK } from "@3rdweb/sdk"
 import { useEffect } from "react"
 
 export default function UseThirdweb() {
-  const { provider } = useWeb3()
+  const { address, provider } = useWeb3()
   const signer = provider?.getSigner()
 
   const sdk = new ThirdwebSDK("https://rpc-mumbai.maticvigil.com")
@@ -14,5 +14,8 @@ export default function UseThirdweb() {
     }
   }, [signer])
 
-  return sdk
+  return {
+    address,
+    sdk
+  }
 }

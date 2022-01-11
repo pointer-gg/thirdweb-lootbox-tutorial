@@ -7,7 +7,7 @@ import NFT from "./nft";
 type OpenState = "NotOpened" | "Opening" | NFTMetadata
 
 export default function OpenButton() {
-  const sdk = UseThirdweb()
+  const { sdk } = UseThirdweb()
 
   const [openState, setOpenState] = useState<OpenState>("NotOpened")
 

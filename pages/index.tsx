@@ -2,6 +2,7 @@ import Head from 'next/head'
 import { useState } from 'react'
 import QuizGame from '../components/quiz-game'
 import type { Question } from '../components/quiz-game'
+import Layout from '../components/layout'
 
 export default function Home() {
   const [questionIndex, setQuestionIndex] = useState(0)
@@ -22,9 +23,8 @@ export default function Home() {
   ]
 
   return (
-    <div className='flex flex-col gap-8'>
-      <h1 className="text-6xl font-bold text-blue-600">My Cars Quiz</h1>
+    <Layout title="My Quiz!">
       <QuizGame questions={quizQuestions} />
-    </div>
+    </Layout>
   )
 }
