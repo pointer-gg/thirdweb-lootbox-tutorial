@@ -1,0 +1,14 @@
+import { ConnectWallet } from '@3rdweb/react'
+
+export default function Navbar() {
+  return (
+    <nav className="font-sans flex justify-between pt-4 pb-20 px-4 md:px-20 bg-white w-full h-10 ">
+      <div className="flex gap-4 md:gap-10">
+        <a href="/" className="text-lg no-underline text-grey-darkest hover:text-blue-900">Quiz</a>
+        <a href="/collection" className="text-lg no-underline text-grey-darkest hover:text-blue-900">My Collection</a>
+        <a href="/lounge" className="text-lg no-underline text-grey-darkest hover:text-blue-900">Winner's Lounge</a>
+      </div>
+      <ConnectWallet />
+    </nav>
+  )
+}
