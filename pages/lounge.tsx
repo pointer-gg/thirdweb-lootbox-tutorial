@@ -4,10 +4,11 @@ import { useEffect, useState } from "react";
 import Layout from "../components/layout";
 import NFT from "../components/nft";
 import UseThirdweb from "../hooks/useThirdweb";
+import { bundleAddress } from "../lib/contractAddresses";
 
 export default function Lounge() {
   const { address, sdk } = UseThirdweb();
-  const bundleModule = sdk.getBundleModule('0xaD62C2Ec189bF8301c129d361f8B6b1CEa56F284')
+  const bundleModule = sdk.getBundleModule(bundleAddress);
 
   const [nfts, setNfts] = useState<BundleMetadata[]>([])
 
