@@ -76,13 +76,13 @@ export default function QuizQuestion({questionIndex, questionText, image, answer
 
     if(answerResult === "correct") {
       return <>
-        <p>Congratulations! You won an NFT:</p>
+        <p className="text-green-800">Congratulations! You were awarded an NFT:</p>
         <NFT metadata={reward as NFTMetadata} />
       </>
     }
 
     if(answerResult === "incorrect") {
-      return <p>Sorry, that was incorrect!</p>
+      return <p className="text-red-800">Sorry, that was incorrect!</p>
     }
 
     return (
@@ -97,10 +97,11 @@ export default function QuizQuestion({questionIndex, questionText, image, answer
     <form>
       <div className="flex flex-col gap-4">
       <div>
-        <label className="text-base font-medium text-gray-900">{questionText}</label>
-        {image ? <img src={image} alt="" /> : null}
+        <div className="flex flex-col gap-2">
+          <label className="text-base font-medium text-gray-900">{questionText}</label>
+          {image ? <img src={image} className="object-cover h-48 w-96" alt="" /> : null}
+        </div>
         <fieldset className="mt-4">
-          <legend className="sr-only">Notification method</legend>
           <div className="space-y-4">
             {answers.map((answerText, i) => (
               <div key={i} className="flex items-center">

@@ -18,7 +18,9 @@ export default function MyApp({ Component, pageProps }: AppProps) {
       connectors={connectors}
       supportedChainIds={supportedChainIds}
     >
-      <Component {...pageProps} />
+      <Layout title={pageProps.title}>
+        <Component {...pageProps} />
+      </Layout>
     </ThirdwebProvider>
   )
 }
