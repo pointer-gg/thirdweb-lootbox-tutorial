@@ -1,15 +1,11 @@
 import { useState } from "react"
+import { Question } from "../lib/questions"
 import QuizQuestion from "./quiz-question"
 
-export type Question = {
-  questionText: string,
-  image?: string,
-  answers: string[],
-  correctAnswerIndex: number,
-}
+export type QuestionWithoutAnswer = Omit<Question, 'correctAnswerIndex'>
 
 type Props = {
-  questions: Question[],
+  questions: QuestionWithoutAnswer[],
 }
 
 export default function QuizGame({questions}: Props) {
@@ -25,7 +21,7 @@ export default function QuizGame({questions}: Props) {
   }
 
   if(quizComplete) {
-    return <p>Done</p>
+    return <p>You&apos;ve reached the end of the quiz!</p>
   }
 
   const question = questions[questionIndex]
@@ -34,10 +30,10 @@ export default function QuizGame({questions}: Props) {
     <>
       <QuizQuestion
         key={questionIndex}
+        questionIndex={questionIndex}
         questionText={question.questionText}
         image={question.image}
         answers={question.answers}
-        correctAnswerIndex={question.correctAnswerIndex}
         nextQuestionFunction={nextQuestion}
       />
     </>

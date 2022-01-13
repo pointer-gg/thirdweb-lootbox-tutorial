@@ -25,9 +25,9 @@ type CorrectResponse = {
   reward: NFTMetadata
 };
 
-export type OpenResponse = ErrorResponse | IncorrectResponse | CorrectResponse;
+export type CheckAnswerResponse = ErrorResponse | IncorrectResponse | CorrectResponse;
 
-export default async function Open(req: NextApiRequest, res: NextApiResponse<OpenResponse>) {
+export default async function Open(req: NextApiRequest, res: NextApiResponse<CheckAnswerResponse>) {
   // Validate the request body contains expected fields
   if(!req.body.hasOwnProperty('address')) {
     res.status(400).json({
