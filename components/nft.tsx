@@ -8,7 +8,7 @@ export default function NFT({ metadata }: Props) {
   return (
     <>
       <p className="font-medium text-lg">{metadata.name}</p>
-      <img src={metadata.image} alt={metadata.name} width={200} />
+      <img className="w-48 h-36 object-cover" src={metadata.image} alt={metadata.name} />
     </>
   )
 }

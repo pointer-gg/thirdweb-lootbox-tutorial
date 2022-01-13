@@ -70,7 +70,7 @@ export default async function Open(req: NextApiRequest, res: NextApiResponse<Che
   if(body.answerIndex !== question.correctAnswerIndex) {
     res.status(200).json({
       kind: 'incorrect',
-      correctAnswerIndex: question.correctAnswerIndex,
+      correctAnswerIndex: question.correctAnswerIndex as number,
     });
     return;
   }
