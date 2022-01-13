@@ -98,7 +98,7 @@ export default function QuizQuestion({questionIndex, questionText, image, answer
       <div className="flex flex-col gap-4">
       <div>
         <div className="flex flex-col gap-2">
-          <label className="text-base font-medium text-gray-900">{questionText}</label>
+          <label className="font-medium text-lg text-gray-900">{questionText}</label>
           {image ? <img src={image} className="object-cover h-48 w-96" alt="" /> : null}
         </div>
         <fieldset className="mt-4">

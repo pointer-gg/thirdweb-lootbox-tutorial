@@ -3,6 +3,7 @@ import '../styles/globals.css'
 import type { AppProps } from 'next/app'
 import { ThirdwebProvider } from '@3rdweb/react';
 import Layout from '../components/layout';
+import Head from 'next/head';
 
 // Polygon Mumbai chain ID is 80001, see https://chainlist.org
 const supportedChainIds = [80001];
@@ -14,6 +15,10 @@ const connectors = {
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   return (
+    <>
+    <Head>
+      <title>{pageProps.title}</title>
+    </Head>
     <ThirdwebProvider
       connectors={connectors}
       supportedChainIds={supportedChainIds}
@@ -22,5 +27,6 @@ export default function MyApp({ Component, pageProps }: AppProps) {
         <Component {...pageProps} />
       </Layout>
     </ThirdwebProvider>
+    </>
   )
 }
