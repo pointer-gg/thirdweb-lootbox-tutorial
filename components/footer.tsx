@@ -7,7 +7,7 @@ export default function Footer() {
         rel='noopener noreferrer'
       >
         Learn web3 dev and earn crypto rewards at{" "}
-        <span className=''>Pointer</span>
+        <span className='underline'>Pointer</span>
       </a>
     </footer>
   )
