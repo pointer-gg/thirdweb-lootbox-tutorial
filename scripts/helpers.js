@@ -1,26 +1,27 @@
 import { ThirdwebSDK } from "@3rdweb/sdk";
 import ethers from "ethers";
 
-//Importing and configuring our .env file that we use to securely store our environment variables
+// Read environment variables from .env
 import dotenv from "dotenv";
 dotenv.config();
 
 const walletPrivateKey = process.env.WALLET_PRIVATE_KEY;
 
-if (!walletPrivateKey) {
-  console.log("Wallet private key missing")
+if (!walletPrivateKey || walletPrivateKey.length === 0) {
+  console.error("Wallet private key missing")
+  process.exit(1)
 }
 
 export const sdk = new ThirdwebSDK(
   new ethers.Wallet(
     // Wallet private key. NEVER CHECK THE KEY IN. ALWAYS USE ENVIRONMENT VARIABLES.
-    process.env.WALLET_PRIVATE_KEY as string,
+    process.env.WALLET_PRIVATE_KEY,
     // We use Polygon Mumbai network
     ethers.getDefaultProvider("https://rpc-mumbai.maticvigil.com")
   ),
 );
 
-const appAddress = '0x1D21f7Fe4a1E3deADb6a03bd3bD75E4017DCB493';
+const appAddress = '0xC624336ed25A2c73e263162b38f501b8e7212E9b';
 
 export async function getApp() {
   const app = await sdk.getAppModule(appAddress);

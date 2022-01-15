@@ -2,10 +2,10 @@ import { readFileSync } from 'fs';
 import { sdk } from './helpers';
 
 async function main() {
-  const bundleModuleAddress = '0x4F9B996dC43C69B10F7DcD95895a5A67646664f1';
+  const bundleModuleAddress = '0x7c4be03e80e1c482491f63f46c46c4e6caef8cc2';
   const bundleModule = sdk.getBundleModule(bundleModuleAddress);
 
-  const packModuleAddress = '0x0e08a5374c92406D128e11678c299b21d0032BD9';
+  const packModuleAddress = '0xdF168480C5F4CA170c648aEDc5F5a44fB1617775';
   const packModule = sdk.getPackModule(packModuleAddress);
 
   console.log('Getting all NFTs from bundle...');
@@ -24,7 +24,7 @@ async function main() {
     assets: nftsInBundle.map(nft => ({
       tokenId: nft.metadata.id,
       amount: nft.supply,
-    })),
+    }))
   });
 
   console.log('Pack created!')

@@ -2,7 +2,8 @@ import { readFileSync } from 'fs';
 import { sdk } from './helpers';
 
 async function main() {
-  const bundleModuleAddress = '0x4F9B996dC43C69B10F7DcD95895a5A67646664f1';
+  // Paste in the address from when you created the bundle module
+  const bundleModuleAddress = '0xE1d828a17f266677B49A1af081f3Ea995F503c84';
   const bundleModule = sdk.getBundleModule(bundleModuleAddress);
 
   console.log('Creating NFT batch...');
@@ -11,24 +12,36 @@ async function main() {
     {
       metadata: {
         name: 'Tesla Model 3',
-        description: 'A pretty rare car!',
+        description: 'A pretty fancy car!',
         image: readFileSync('./assets/tesla-model3.jpeg'),
+        properties: {
+          rarity: 'a bit rare',
+          fanciness: 7,
+        }
       },
       supply: 50,
     },
     {
       metadata: {
         name: 'Porsche 911',
-        description: 'A pretty rare car!',
+        description: 'A pretty fancy car!',
         image: readFileSync('./assets/porsche-911.jpeg'),
+        properties: {
+          rarity: 'a bit rare',
+          fanciness: 7,
+        }
       },
       supply: 50,
     },
     {
       metadata: {
         name: 'Mclaren P1',
-        description: 'A super rare car!',
+        description: 'A super fancy car!',
         image: readFileSync('./assets/mclaren-p1.jpeg'),
+        properties: {
+          rarity: 'super rare!',
+          fanciness: 10,
+        }
       },
       supply: 10,
     }
