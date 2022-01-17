@@ -1,7 +1,7 @@
-import { NFTMetadata, ThirdwebSDK } from "@3rdweb/sdk";
+import { ThirdwebSDK } from "@3rdweb/sdk";
 import { BigNumber, ethers } from "ethers";
 import quizQuestions from "../../lib/questions"
-import { bundleAddress, packAddress } from "../../lib/contractAddresses";
+import { packAddress } from "../../lib/contractAddresses";
 import type { NextApiRequest, NextApiResponse } from "next";
 
 type Body = {

@@ -1,6 +1,5 @@
 import { BundleMetadata, PackMetadata } from "@3rdweb/sdk";
 import { BigNumber } from "ethers";
-import { id } from "ethers/lib/utils";
 import { useEffect, useState } from "react";
 import NFT from "../components/nft";
 import OpenButton from "../components/open-button";
