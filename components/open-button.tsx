@@ -26,8 +26,8 @@ export default function OpenButton({ packModule, afterOpen }: Props) {
           },
           duration: 5000,
         }
-      ),
-        await afterOpen();
+      );
+      await afterOpen();
     } catch {
       setOpening(false);
     }
