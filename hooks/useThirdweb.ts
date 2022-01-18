@@ -9,13 +9,14 @@ export default function UseThirdweb() {
   const sdk = new ThirdwebSDK("https://rpc-mumbai.maticvigil.com")
 
   useEffect(() => {
-    if(signer) {
+    if (signer) {
       sdk.setProviderOrSigner(signer)
     }
   }, [signer])
 
   return {
     address,
-    sdk
+    sdk,
+    signer
   }
 }

@@ -72,8 +72,8 @@ export default function QuizQuestion({ questionIndex, questionText, image, answe
 
     if (answerResult === "correct") {
       return <>
-        <p className="text-green-800">Congratulations! You were awarded a lootbox!</p>
-        <p>View and open it in the <Link href="/lounge"><a className="underline hover:no-underline">lounge</a></Link>!</p>
+        <p className="text-green-800">Congratulations! That was the right answer!</p>
+        <p>A pack will be sent to you shortly. You'll be able to check it out and open it in the <Link href="/lounge"><a className="underline hover:no-underline">lounge</a></Link>!</p>
       </>
     }
 

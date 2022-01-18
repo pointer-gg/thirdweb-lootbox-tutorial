@@ -89,8 +89,8 @@ export default async function Open(req: NextApiRequest, res: NextApiResponse<Che
   console.log(`Transferring a pack to ${body.address}...`);
   const packModule = sdk.getPackModule(packAddress);
   const packTokenId = '0';
-  await packModule.transfer(body.address, packTokenId, BigNumber.from(1));
-  console.log('Transferred');
+  // Note that this is async
+  packModule.transfer(body.address, packTokenId, BigNumber.from(1));
 
   res.status(200).json({
     kind: 'correct',

@@ -1,5 +1,6 @@
 import { ConnectWallet } from "@3rdweb/react";
 import React from "react";
+import usePackEvents from "../hooks/usePackEvents";
 import Footer from "./footer";
 import Navbar from "./navbar";
 
@@ -8,6 +9,8 @@ type Props = {
 }
 
 export default function Layout({ children, title }: React.PropsWithChildren<Props>) {
+  usePackEvents();
+
   return (
     <>
       <Navbar />

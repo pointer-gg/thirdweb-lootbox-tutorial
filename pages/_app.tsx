@@ -17,7 +17,6 @@ const connectors = {
 export default function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
-      <Toaster />
       <Head>
         <title>{pageProps.title}</title>
       </Head>
@@ -26,6 +25,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
         supportedChainIds={supportedChainIds}
       >
         <Layout title={pageProps.title}>
+          <Toaster />
           <Component {...pageProps} />
         </Layout>
       </ThirdwebProvider>
