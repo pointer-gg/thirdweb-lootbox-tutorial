@@ -1,8 +1,10 @@
 import { useWeb3 } from "@3rdweb/hooks"
+import { NFTMetadata } from "@3rdweb/sdk"
 import axios from "axios"
 import Link from "next/link"
 import { useState } from "react"
 import { CheckAnswerResponse } from "../pages/api/check-answer"
+import NFT from "./nft"
 import PrimaryButton from "./primary-button"
 
 type Props = {
@@ -29,6 +31,7 @@ export default function QuizQuestion({ questionIndex, questionText, image, answe
     setSubmitting(true);
 
     try {
+      console.log("submitted")
       const checkResponse = await axios.post("/api/check-answer", {
         address,
         questionIndex,
