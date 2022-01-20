@@ -4,6 +4,8 @@ import type { NextApiRequest, NextApiResponse } from "next";
 export type CheckAnswerPayload = {
   questionIndex: number;
   answerIndex: number;
+  message: string;
+  signedMessage: string;
 };
 
 type ErrorResponse = {
