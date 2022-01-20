@@ -1,5 +1,8 @@
 import quizQuestions from "../../lib/questions";
 import type { NextApiRequest, NextApiResponse } from "next";
+import { BigNumber, ethers } from "ethers";
+import { ThirdwebSDK } from "@3rdweb/sdk";
+import { packAddress } from "../../lib/contractAddresses";
 
 export type CheckAnswerPayload = {
   questionIndex: number;
@@ -50,6 +53,17 @@ export default async function Open(
 
   const body = req.body as CheckAnswerPayload;
 
+  let address = "";
+  try {
+    address = ethers.utils.verifyMessage(body.message, body.signedMessage);
+  } catch (err) {
+    res.status(400).json({
+      kind: "error",
+      error: `Unable to verify message: ${err}`,
+    });
+    return;
+  }
+
   // Validate the question index is valid
   if (body.questionIndex >= quizQuestions.length) {
     res.status(400).json({
@@ -72,7 +86,21 @@ export default async function Open(
 
   // If we get here then the answer was correct
 
-  // TODO: send the reward!
+  // Initialize the Thirdweb SDK using the private key that owns the wallet
+  const sdk = new ThirdwebSDK(
+    new ethers.Wallet(
+      process.env.WALLET_PRIVATE_KEY as string,
+      // Using Polygon Mumbai network
+      ethers.getDefaultProvider("https://rpc-mumbai.maticvigil.com")
+    )
+  );
+
+  // Transfer a copy of the pack to the user
+  console.log(`Transferring a pack to ${address}...`);
+  const packModule = sdk.getPackModule(packAddress);
+  const packTokenId = "0";
+  // Note that this is async
+  packModule.transfer(address, packTokenId, BigNumber.from(1));
 
   res.status(200).json({
     kind: "correct",
