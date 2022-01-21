@@ -4,6 +4,7 @@ import type { AppProps } from "next/app";
 import Layout from "../components/layout";
 import Head from "next/head";
 import { ThirdwebProvider } from "@3rdweb/react";
+import { Toaster } from "react-hot-toast";
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   // Polygon Mumbai chain ID is 80001, see https://chainlist.org
@@ -16,6 +17,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
 
   return (
     <>
+      <Toaster />
       <Head>
         <title>{pageProps.title}</title>
       </Head>
