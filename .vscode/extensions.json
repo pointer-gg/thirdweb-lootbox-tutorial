@@ -1,7 +1,6 @@
 {
   "recommendations": [
     "esbenp.prettier-vscode",
-    "2gua.rainbow-brackets",
     "bradlc.vscode-tailwindcss"
   ]
 }
