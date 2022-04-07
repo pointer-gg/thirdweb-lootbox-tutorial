@@ -9,6 +9,7 @@
     "@3rdweb/hooks": "^1.8.0",
     "@3rdweb/react": "^1.8.1",
     "@3rdweb/sdk": "^1.36.2",
+    "@thirdweb-dev/sdk": "^2.0.26",
     "axios": "^0.25.0",
     "dotenv": "^14.2.0",
     "ethers": "^5.5.3",
